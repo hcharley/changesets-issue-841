@@ -31,5 +31,5 @@ jobs:
         run_install: false
     - run: pnpm i
       working-directory: changesets-issue-841
-    - run: pnpx changeset
+    - run: pnpm changeset
       working-directory: changesets-issue-841
