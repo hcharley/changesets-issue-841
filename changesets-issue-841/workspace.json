@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "config": "libs/config",
+    "changesets-issue-841": "apps/changesets-issue-841",
+    "domain": "libs/domain"
+  }
+}

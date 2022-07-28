@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/changesets-issue-841/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/changesets-issue-841",
+        "main": "apps/changesets-issue-841/src/main.ts",
+        "tsConfig": "apps/changesets-issue-841/tsconfig.app.json",
+        "assets": ["apps/changesets-issue-841/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/changesets-issue-841/src/environments/environment.ts",
+              "with": "apps/changesets-issue-841/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "changesets-issue-841:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "changesets-issue-841:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/changesets-issue-841/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/changesets-issue-841"],
+      "options": {
+        "jestConfig": "apps/changesets-issue-841/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
